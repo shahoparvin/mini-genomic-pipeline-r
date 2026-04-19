@@ -10,3 +10,21 @@ gr <- GRanges(
 dna <- DNAStringSet(c("ATGCA", "CCGTT", "GGCCA", "TTTAA", "AACCG"))
 
 expr <- c(12, 22, 19, 8, 30)
+
+library(GenomicRanges)
+library(Biostrings)
+
+source("script/process_regions.R")
+source("data/example_data.R")
+
+res <- process_regions(
+  gr = gr,
+  dna = dna,
+  expr = expr,
+  expr_cutoff = 19,
+  motif = "CC"
+)
+
+res$gr
+res$bio_seq
+res$expr
